@@ -7,15 +7,23 @@ let logger = require('morgan'); // HTTP request logger middleware
 
 // initializing the Express application
 let app = express();
-
+let cors = require('cors')
+//Create user model instance
+let userModel = require('../model/User');
+let User = userModel.User;
 // importing route handlers
 let indexRouter = require('../routes/index'); // main route (home page)
+let usersRouter = require('../router/users');
 let workoutRouter = require('../routes/workout'); // route for workout-related endpoints
 
 // view engine setup
 app.set('views', path.join(__dirname, '../views')); // setting the directory for view templates
 app.set('view engine', 'ejs'); // setting EJS as the template/view engine
-
+let session = require('express-session')
+let passport = require('passport')
+let passportLocal = require('passport-local')
+let localStrategy = passportLocal.Strategy
+let flash = require('connect-flash')
 // importing Mongoose for MongoDB connection
 const mongoose = require('mongoose');
 let DB = require('./db'); // importing the database configuration (URI)
@@ -32,7 +40,19 @@ mongoDB.once('open', () => {
 
 // making another connection with updated options
 mongoose.connect(DB.URI, { useNewURIParser: true, useUnifiedTopology: true });
-
+app.use(session({
+  secret:"SomeSecret",
+  saveUninitialized: false,
+  resave: false
+}))
+//initialize the flash
+app.use(flash());
+//serialize and deserialize the user information
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+//initialize passport
+app.use(passport.initialize());
+app.use(passport.session());
 // setting up middleware
 app.use(logger('dev')); // logs HTTP requests in the console
 app.use(express.json()); // parses incoming requests with JSON payloads
