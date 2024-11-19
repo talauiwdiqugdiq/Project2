@@ -13,7 +13,7 @@ let userModel = require('../model/User');
 let User = userModel.User;
 // importing route handlers
 let indexRouter = require('../routes/index'); // main route (home page)
-let usersRouter = require('../router/users');
+let usersRouter = require('../routers/users');
 let workoutRouter = require('../routes/workout'); // route for workout-related endpoints
 
 // view engine setup
