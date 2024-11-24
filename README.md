@@ -28,9 +28,8 @@ Update: Users can edit existing surveys.
 Delete: Users can delete surveys that are no longer needed.
 
 3. Authentication:
-   
 Navigation Items (or other UI elements) that allow the user to navigate to appropriate security pages (Login and Register) and Logout. When the user is not logged in, the navigation bar only show sthe Login link. When the user is logged in, the navigation bar only shows a Logout Navigation Item with a welcome message.
-To edit or delete the user must be logged in for privacy. Otherwise, if the user is not logged in then they can only view or answer the surveys.
+To edit or delete the user must be logged in for privacy. Otherwise, if the user is not logged in then they can only view or answer the survey.
 
 5. UI/UX
 The user interface is functional but not super polished yet. The priority is on usability and core functionality.
