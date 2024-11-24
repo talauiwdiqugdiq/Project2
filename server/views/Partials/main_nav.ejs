@@ -1,8 +1,12 @@
 <!-- NavBar -->
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#666a6e;">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#101214;">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/" style="color: white; font-weight: bold;">
-      <i class="fa-solid fa-dumbbell"></i> Workout Tracker Form
+    <!-- Logo and Brand Name -->
+    <a class="navbar-brand d-flex align-items-center" href="/">
+      <!-- Replace envelope icon with logo image -->
+      <img src="/assets/images/logo.png" alt="Logo" width="87" height="58" class="me-2">
+      Job Satisfaction Survey
+    </a>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
@@ -17,17 +21,53 @@
           <% } else { %>
               <a class="nav-link" href="./home" style="font-weight: bold;">
           <% } %>
-              <i class="fa-solid fa-house-chimney" ></i> Home</a> 
+              <i class="fa-solid fa-house-chimney"></i> Home</a> 
         </li>
         <li class="nav-item">
-          <% if(title == "Workout Tracker") { %>
-            <a class="nav-link active" href="/workoutlist" style="color: white; font-weight: bold;">
+          <% if(title == "Survey Tracker") { %>
+            <a class="nav-link active" href="/surveyslist" style="color: white; font-weight: bold;">
           <% } else { %>
-            <a class="nav-link" href="/workoutlist" style="color: white; font-weight: bold;">
+            <a class="nav-link" href="/surveyslist" style="color: white; font-weight: bold;">
           <% } %>  
-          <i class="fa-solid fa-book"></i> Workout Tracker</a>
+          <i class="fa-solid fa-book"></i> Survey Tracker</a>
         </li>
-      </ul>
+        <% if(typeof displayName=='string' && displayName) { %>
+          <li class="navbar-text">
+            <i class="fas fa-lg fa-user"></i>
+            Welcome, <%= displayName %>
+          </li>
+          <li class="nav-item">
+            <!-- Logout link as a POST request -->
+            <a href="/logout" class="nav-link">
+              <i class="fas fa-sign-out"></i> 
+              Logout
+            </a>
+          </li>
+        <% } else { %>
+          <li class="nav-item">
+            <a href="/login" class="nav-link">
+              <i class="fas fa-lg fa-sign-in-alt"></i>
+              Login
+            </a>
+          </li>
+        <% } %>
+
     </div>
   </div>
 </nav>
+
+<script>
+  // Add event listener to the logout link
+  document.getElementById('logoutLink').addEventListener('click', function(event) {
+    event.preventDefault();  // Prevent default link behavior
+
+    // Create a form to submit the POST request to logout
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = '/logout'; // Set the action to the logout route
+
+    // Append the form to the body and submit it
+    document.body.appendChild(form);
+    form.submit();
+  });
+</script>

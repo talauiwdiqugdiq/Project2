@@ -4,8 +4,7 @@ By Group 16: Tala Bashanfar, Ethar Almaghrabi, Ashvien Rameshkumar
 Github Repository: https://github.com/ethar615/GroupProject16_part1 
 
 Notes: 
-1. To run this program you need to create a mongoDB and collection in your local machine
-MongoDB details:
+1. MongoDB details:
 Database Name: SurveyLib
 Collection name: Job_surveys
 
