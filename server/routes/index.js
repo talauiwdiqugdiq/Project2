@@ -6,7 +6,7 @@ let User = userModel.User;
 
 /* GET index page. */
 router.get('/', function (req, res, next) {
-  res.render('index', {
+  res.render('home', {
     title: 'Home',
     displayName: req.user ? req.user.displayName : ''
   });
@@ -14,7 +14,7 @@ router.get('/', function (req, res, next) {
 
 /* GET home page. */
 router.get('/home', function (req, res, next) {
-  res.render('index', {
+  res.render('home', {
     title: 'Home',
     displayName: req.user ? req.user.displayName : ''
   });

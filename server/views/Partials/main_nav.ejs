@@ -5,36 +5,39 @@
     <a class="navbar-brand d-flex align-items-center" href="/">
       <!-- Replace envelope icon with logo image -->
       <img src="/assets/images/logo.png" alt="Logo" width="87" height="58" class="me-2">
-      Job Satisfaction Survey
+      Job Satisfaction Survey <!-- Text of the website name -->
     </a>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
             aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span><!--button to toggle navigation in mobile view-->
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent"><!--collapsible navbar menu -->
       <ul class="navbar-nav ms-auto">
+        <!--home link active class applied if current title is "Home" -->
         <li class="nav-item">
           <% if(title=="Home") { %>
               <a class="nav-link active" href="./home" style="font-weight: bold;">
           <% } else { %>
               <a class="nav-link" href="./home" style="font-weight: bold;">
           <% } %>
-              <i class="fa-solid fa-house-chimney"></i> Home</a> 
+              <i class="fa-solid fa-house-chimney"></i> Home</a> <!--FontAwesome icon and text -->
         </li>
+        <!--survey tracker link , active class applied if current title is "Survey Tracker" -->
         <li class="nav-item">
           <% if(title == "Survey Tracker") { %>
-            <a class="nav-link active" href="/surveyslist" style="color: white; font-weight: bold;">
+            <a class="nav-link active" href="/surveyslist" style="font-weight: bold;">
           <% } else { %>
-            <a class="nav-link" href="/surveyslist" style="color: white; font-weight: bold;">
+            <a class="nav-link" href="/surveyslist" style="font-weight: bold;">
           <% } %>  
-          <i class="fa-solid fa-book"></i> Survey Tracker</a>
+          <i class="fa-solid fa-book"></i> Survey Tracker</a><!--FontAwesome icon and text -->
         </li>
+        <!--checks if a display name is provided to show personalized content-->
         <% if(typeof displayName=='string' && displayName) { %>
           <li class="navbar-text">
             <i class="fas fa-lg fa-user"></i>
-            Welcome, <%= displayName %>
+            Welcome, <%= displayName %> <!--displays a welcome messages with the users name in the nav bar-->
           </li>
           <li class="nav-item">
             <!-- Logout link as a POST request -->
@@ -44,6 +47,7 @@
             </a>
           </li>
         <% } else { %>
+          <!--login link which is only shown if the user is not logged in -->
           <li class="nav-item">
             <a href="/login" class="nav-link">
               <i class="fas fa-lg fa-sign-in-alt"></i>
@@ -63,11 +67,11 @@
 
     // Create a form to submit the POST request to logout
     const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = '/logout'; // Set the action to the logout route
+    form.method = 'POST';// set the form method to POST
+    form.action = '/logout'; // set the action to the logout route
 
     // Append the form to the body and submit it
     document.body.appendChild(form);
-    form.submit();
+    form.submit(); // submit the form (this triggers a POST request to log the user out)
   });
 </script>

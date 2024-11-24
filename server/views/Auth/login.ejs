@@ -3,13 +3,14 @@
 <main class="container">
     <!--Message Area-->
     <% if (message && message.length > 0) { %>
-        <div class="alert alert-danger">
-            <%= message %>
+        <div class="alert alert-danger"><!-- Bootstrap alert box for error messages -->
+            <%= message %> <!-- Dynamically render the error message -->
         </div>
     <% } %>
     <div class="row">
-        <div class="offset-md-4 col-md-4">
+        <div class="offset-md-4 col-md-4">  <!-- centering the login form in the middle of page -->
             <h1>Please Login</h1>
+            <!-- username input -->
             <form method="post" autocomplete="off">
                 <fieldset class="form-group">
                     <label for="username">Username</label>
@@ -17,16 +18,20 @@
                         name="username" placeholder="Enter your username"
                         id="username" required autofocus>
                 </fieldset>
-                <fieldset class="form-group">
+                <fieldset class="form-group"><!-- grouping for the password input -->
+                    <!--password input-->
                     <label for="password">Password</label>
                     <input type="password" class="form-control"
                         name="password" placeholder="Enter your password"
                         id="password" required>
+                    <!--link to register if the user doesnt have an account-->
                     <p>or <a href="/register">Register Here</a></p>
                 </fieldset>
+                <!-- login submit button  -->
                 <fieldset class="form-group">
                     <input type="submit" class="btn btn-success"
                         value="Login">
+                    <!--cancel button redirects to index/the home page-->
                     <a href="/">
                         <input type="button" class="btn btn-warning"
                             value="Cancel">

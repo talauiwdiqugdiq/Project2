@@ -9,33 +9,38 @@
     <% } %>
     <div class="row">
         <div class="offset-md-4 col-md-4">
-            <h1>Please Register</h1>
-            <form method="post" autocomplete="off">
-                <fieldset class="form-group">
+            <h1>Please Register</h1> <!-- the heading for the registration page -->
+            <form method="post" autocomplete="off"> <!-- form that submits a POST request -->
+                <!-- username input -->
+                <fieldset class="form-group"> 
                     <label for="username">Username</label>
                     <input type="text" class="form-control"
                         name="username" placeholder="Enter the username"
-                        id="username" required autofocus>
+                        id="username" required autofocus> <!--input field for username with placeholder and required and autofocus-->
                 </fieldset>
+                <!--password-->
                 <fieldset class="form-group">
                     <label for="password">Password</label>
                     <input type="password" class="form-control"
                         name="password" placeholder="Enter the password"
                         id="password" required>
                 </fieldset>
+                <!--email-->
                 <fieldset class="form-group">
                     <label for="email">Email</label>
                     <input type="email" class="form-control"
                         name="email" placeholder="Enter the email"
                         id="email" required>
                 </fieldset>
+                <!--display name-->
                 <fieldset class="form-group">
                     <label for="displayName">Display Name</label>
                     <input type="text" class="form-control"
                         name="displayName" placeholder="Enter the display name"
                         id="displayName" required>
                 </fieldset>
-                <br>
+                <br> <!--breaking space-->
+                <!--submit and cancel buttons-->
                 <fieldset class="form-group text-right">
                     <input type="submit" class="btn btn-success"
                         value="Register">

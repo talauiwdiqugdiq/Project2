@@ -7,12 +7,13 @@
             <!-- Title -->
             <h1 class="text-center display-4 mb-3" style="color: #1a73e8;"><%= title %></h1>
             <br>
-            <% if (typeof displayName == 'string' && displayName) { %>
+            <!--check if user is logged in (displayName is set) -->
+            <% if (typeof displayName == 'string' && displayName) { %> 
             <!-- Create Button Aligned Left Under Title --> 
             <a href="/surveyslist/add" class="btn btn-primary btn-sm" role="button" style="border-radius: 8px;">
-                <i class="fas fa-plus-circle"></i> Create a Survey
+                <i class="fas fa-plus-circle"></i> Create a Survey <!--button for creating new surveys -->
             </a>
-            <% } %>
+            <% } %> <!--end of user login check -->
 
             <!-- Survey List Table -->
             <table class="table table-bordered table-striped table-hover" style="box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);">
@@ -29,6 +30,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- loops through each survey in the SurveyList array -->
                     <% for (let count = 0; count < SurveyList.length; count++) { %>
                     <tr class="d-flex" style="background-color: #f9f9f9;">
                         <td class="text-center col-2" style="font-weight: bold; color: #007bff;"><%= SurveyList[count].Name %></td>
@@ -36,14 +38,14 @@
                         <td class="text-center col-2" style="color: #6c757d;"><%= SurveyList[count].Satisfaction %></td>
                         <td class="text-center col-3" style="font-weight: bold;"><%= SurveyList[count].DurationOfEmployment %> years</td>
                         <td class="text-center col-3" style="color: #6c757d;"><%= SurveyList[count].Improvments %></td>
-                        <% if (typeof displayName == 'string' && displayName) { %>
+                        <% if (typeof displayName == 'string' && displayName) { %> <!--actions Section for logged-in users -->
                         <!-- Actions Section for Logged-In Users -->
                         <td class="text-center col-2">
                             <a href="/surveyslist/edit/<%= SurveyList[count]._id %>" class="btn btn-outline-primary btn-sm mx-1" style="border-radius: 5px;">
-                                <i class="fas fa-pencil-alt"></i> Edit
+                                <i class="fas fa-pencil-alt"></i> Edit <!-- Edit button -->
                             </a>
                             <a href="/surveyslist/delete/<%= SurveyList[count]._id %>" class="btn btn-outline-danger btn-sm mx-1" onclick="return confirmDelete()" style="border-radius: 5px;">
-                                <i class="fas fa-trash-alt"></i> Delete
+                                <i class="fas fa-trash-alt"></i> Delete <!-- Delete button with confirmation -->
                             </a>
                         </td>
                         <% } %>
@@ -57,6 +59,7 @@
 
 <!-- Delete Confirmation Script -->
 <script>
+    //confirm dialog when the delete button is clicked
     function confirmDelete() {
         return confirm("Are you sure you want to delete this survey entry?");
     }
